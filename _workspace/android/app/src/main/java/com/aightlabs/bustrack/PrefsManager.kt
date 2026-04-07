@@ -45,13 +45,13 @@ class PrefsManager(context: Context) {
     fun getRoute(): String = prefs.getString(KEY_ROUTE, "") ?: ""
 
     fun setActive(active: Boolean) {
-        prefs.edit().putBoolean(KEY_IS_ACTIVE, active).apply()
+        prefs.edit().putBoolean(KEY_IS_ACTIVE, active).commit()
     }
 
     fun isActive(): Boolean = prefs.getBoolean(KEY_IS_ACTIVE, false)
 
     fun setStartTime(time: Long) {
-        prefs.edit().putLong(KEY_START_TIME, time).apply()
+        prefs.edit().putLong(KEY_START_TIME, time).commit()
     }
 
     fun getStartTime(): Long = prefs.getLong(KEY_START_TIME, 0L)

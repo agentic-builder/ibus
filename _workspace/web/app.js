@@ -34,6 +34,7 @@
   var vehicles = {};     // vehicleId -> vehicle data
   var selectedVehicleId = null;
   var relativeTimeTimer = null;
+  var isFirstLoad = true;
 
   // ---------- 카카오맵 초기화 ----------
   var DEFAULT_CENTER = { lat: 35.1028, lng: 128.9656 };
@@ -379,6 +380,28 @@
         }
 
         updateCardList();
+
+        // 첫 로드 시 차량 위치로 지도 자동 이동
+        if (isFirstLoad) {
+          isFirstLoad = false;
+          var vids = Object.keys(vehicles);
+          if (vids.length > 0) {
+            // active 차량 우선, 없으면 첫 번째 차량
+            var targetId = vids[0];
+            for (var k = 0; k < vids.length; k++) {
+              if (vehicles[vids[k]].status === 'active') {
+                targetId = vids[k];
+                break;
+              }
+            }
+            var tv = vehicles[targetId];
+            if (tv && tv.location) {
+              var pos = new kakao.maps.LatLng(tv.location.lat, tv.location.lng);
+              map.setCenter(pos);
+              map.setLevel(3);
+            }
+          }
+        }
 
         // 선택된 차량 카드 갱신
         if (selectedVehicleId && vehicles[selectedVehicleId]) {

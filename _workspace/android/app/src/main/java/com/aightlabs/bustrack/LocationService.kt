@@ -53,7 +53,7 @@ class LocationService : Service() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var locationCallback: LocationCallback
     private lateinit var prefs: PrefsManager
-    private val database = FirebaseDatabase.getInstance().reference
+    private val database = FirebaseDatabase.getInstance(BusTrackApp.DB_URL).reference
     private val handler = Handler(Looper.getMainLooper())
     private var vehicleId: String = ""
 
@@ -85,8 +85,6 @@ class LocationService : Service() {
         startForegroundWithNotification()
         startLocationUpdates()
         setStatusActive()
-        prefs.setActive(true)
-        prefs.setStartTime(SystemClock.elapsedRealtime())
 
         // Schedule auto-stop after 3 hours
         handler.postDelayed(autoStopRunnable, AUTO_STOP_DELAY_MS)
@@ -101,7 +99,6 @@ class LocationService : Service() {
         handler.removeCallbacks(autoStopRunnable)
         stopLocationUpdates()
         setStatusInactive()
-        prefs.setActive(false)
     }
 
     private fun createNotificationChannel() {
@@ -226,9 +223,11 @@ class LocationService : Service() {
     private fun stopTracking() {
         handler.removeCallbacks(autoStopRunnable)
         prefs.setActive(false)
-        stopSelf()
+        setStatusInactive()
+        // Glance 상태 변경 + 위젯 갱신을 서비스 종료 전에 수행
         kotlinx.coroutines.MainScope().launch {
-            BusTrackWidget.updateAll(this@LocationService)
+            BusTrackWidget.setActiveStateAll(this@LocationService, false)
+            stopSelf()
         }
     }
 

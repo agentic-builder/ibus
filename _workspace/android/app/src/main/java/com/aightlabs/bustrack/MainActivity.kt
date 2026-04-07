@@ -21,7 +21,7 @@ import java.util.UUID
 class MainActivity : AppCompatActivity() {
 
     private lateinit var prefs: PrefsManager
-    private val database = FirebaseDatabase.getInstance().reference
+    private val database = FirebaseDatabase.getInstance(BusTrackApp.DB_URL).reference
 
     private val locationPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
@@ -126,7 +126,7 @@ class MainActivity : AppCompatActivity() {
                         val kindergartenData = mapOf(
                             "name" to kindergartenName,
                             "createdAt" to ServerValue.TIMESTAMP,
-                            "shareLink" to "https://bustrack.web.app/track/$kindergartenId"
+                            "shareLink" to "https://ibus-bustrack.web.app/track/$kindergartenId"
                         )
                         database.child("kindergartens").child(kindergartenId)
                             .setValue(kindergartenData)
@@ -213,7 +213,16 @@ class MainActivity : AppCompatActivity() {
 
         val tvShareLink = findViewById<TextView>(R.id.tvShareLink)
         val kindergartenId = prefs.getKindergartenId()
-        tvShareLink.text = "학부모 공유 링크:\nhttps://bustrack.web.app/track/${kindergartenId}"
+        val shareUrl = "https://ibus-bustrack.web.app/track/${kindergartenId}"
+        tvShareLink.text = "학부모 공유 링크:\n${shareUrl}"
+
+        val btnCopyLink = findViewById<Button>(R.id.btnCopyLink)
+        btnCopyLink.setOnClickListener {
+            val clipboard = getSystemService(android.content.Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
+            val clip = android.content.ClipData.newPlainText("학부모 공유 링크", shareUrl)
+            clipboard.setPrimaryClip(clip)
+            Toast.makeText(this, "링크가 복사되었습니다", Toast.LENGTH_SHORT).show()
+        }
 
         val tvWidgetGuide = findViewById<TextView>(R.id.tvWidgetGuide)
         tvWidgetGuide.text = "홈 화면을 길게 누르고\n'위젯' → '버스 위치추적'을 추가해주세요"

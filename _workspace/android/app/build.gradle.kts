@@ -51,8 +51,8 @@ dependencies {
     implementation("com.google.android.gms:play-services-location:21.0.1")
 
     // Jetpack Glance (Widget)
-    implementation("androidx.glance:glance-appwidget:1.0.0")
-    implementation("androidx.glance:glance-material3:1.0.0")
+    implementation("androidx.glance:glance-appwidget:1.1.1")
+    implementation("androidx.glance:glance-material3:1.1.1")
 
     // AndroidX
     implementation("androidx.core:core-ktx:1.12.0")

@@ -179,6 +179,17 @@
                 android:layout_marginTop="32dp"
                 android:textIsSelectable="true" />
 
+            <Button
+                android:id="@+id/btnCopyLink"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="링크 복사하기"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/primary_green"
+                android:layout_marginTop="12dp" />
+
             <TextView
                 android:id="@+id/tvWidgetGuide"
                 android:layout_width="match_parent"
