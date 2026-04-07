@@ -1,0 +1,13 @@
+{
+  "rules": {
+    "kindergartens": {
+      ".read": true,
+      ".write": true
+    },
+    "vehicles": {
+      ".read": true,
+      ".write": true,
+      ".indexOn": ["kindergartenId"]
+    }
+  }
+}

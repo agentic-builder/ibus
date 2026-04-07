@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Registration Form -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/formContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="32dp">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="차량 정보 등록"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="48dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/tvSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="최초 1회만 입력하면 됩니다"
+                android:textSize="16sp"
+                android:textColor="#666666"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/labelKindergarten"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="어린이집 이름"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="48dp"
+                app:layout_constraintTop_toBottomOf="@id/tvSubtitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <EditText
+                android:id="@+id/etKindergartenName"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:hint="예: 강서어린이집"
+                android:textSize="18sp"
+                android:inputType="text"
+                android:background="@drawable/edit_text_bg"
+                android:padding="12dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/labelKindergarten"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/labelVehicle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="차량 이름"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="24dp"
+                app:layout_constraintTop_toBottomOf="@id/etKindergartenName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <EditText
+                android:id="@+id/etVehicleName"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:hint="예: 버스"
+                android:textSize="18sp"
+                android:inputType="text"
+                android:background="@drawable/edit_text_bg"
+                android:padding="12dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/labelVehicle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/labelRoute"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="운행 구간"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="24dp"
+                app:layout_constraintTop_toBottomOf="@id/etVehicleName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <EditText
+                android:id="@+id/etRoute"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:hint="예: 에코델타시티 운행"
+                android:textSize="18sp"
+                android:inputType="text"
+                android:background="@drawable/edit_text_bg"
+                android:padding="12dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/labelRoute"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:text="등록 완료"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/primary_green"
+                android:layout_marginTop="48dp"
+                app:layout_constraintTop_toBottomOf="@id/etRoute"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Registered Info -->
+        <LinearLayout
+            android:id="@+id/registeredContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="32dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="등록 완료"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_green"
+                android:layout_marginTop="48dp" />
+
+            <TextView
+                android:id="@+id/tvRegisteredInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:layout_marginTop="24dp" />
+
+            <TextView
+                android:id="@+id/tvShareLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#666666"
+                android:gravity="center"
+                android:padding="16dp"
+                android:background="@drawable/share_link_bg"
+                android:layout_marginTop="32dp"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:id="@+id/tvWidgetGuide"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:padding="24dp"
+                android:background="@drawable/widget_guide_bg"
+                android:layout_marginTop="24dp" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</ScrollView>
