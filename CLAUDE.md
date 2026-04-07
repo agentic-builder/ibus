@@ -50,7 +50,20 @@
         └── SKILL.md
 ```
 
+**MVP 상태 (2026-04-07):**
+- Android 앱: 빌드 완료 (debug APK), 위젯 ON/OFF + GPS 전송 정상 동작
+- 학부모 웹: Firebase Hosting 배포 완료 (https://ibus-bustrack.web.app)
+- Firebase: ibus-bustrack 프로젝트, Realtime DB asia-southeast1, 규칙 배포 완료
+- GitHub: https://github.com/agentic-builder/ibus
+
+**기술 스택:**
+- Android: Kotlin, Jetpack Glance 1.1.1, FusedLocationProvider, Firebase RTDB
+- Web: 바닐라 HTML/CSS/JS, 카카오맵 JS API, Firebase compat SDK
+- 위젯 패턴: actionRunCallback + updateAppWidgetState (Glance 내장 상태 관리)
+
 **변경 이력:**
 | 날짜 | 변경 내용 | 대상 | 사유 |
 |------|----------|------|------|
 | 2026-04-07 | 초기 구성 | 전체 | PRD 기반 하네스 신규 구축 |
+| 2026-04-07 | MVP 구현 완료 | Android + Web | 에이전트 팀 병렬 개발, QA 12/12 PASS |
+| 2026-04-07 | 위젯 갱신 버그 수정 | BusTrackWidget.kt | toMutablePreferences() 복사본 버그 → 직접 수정 |
