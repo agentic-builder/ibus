@@ -26,6 +26,7 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ServerValue
+import kotlinx.coroutines.launch
 
 class LocationService : Service() {
 
@@ -226,7 +227,9 @@ class LocationService : Service() {
         handler.removeCallbacks(autoStopRunnable)
         prefs.setActive(false)
         stopSelf()
-        BusTrackWidget.updateAll(this)
+        kotlinx.coroutines.MainScope().launch {
+            BusTrackWidget.updateAll(this@LocationService)
+        }
     }
 
     private fun showAutoStopNotification() {
