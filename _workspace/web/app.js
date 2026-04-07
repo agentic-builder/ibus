@@ -7,13 +7,13 @@
 
   // ---------- Firebase 초기화 ----------
   var firebaseConfig = {
-    apiKey: 'YOUR_FIREBASE_CONFIG',
-    authDomain: 'YOUR_FIREBASE_CONFIG',
-    databaseURL: 'YOUR_FIREBASE_CONFIG',
-    projectId: 'YOUR_FIREBASE_CONFIG',
-    storageBucket: 'YOUR_FIREBASE_CONFIG',
-    messagingSenderId: 'YOUR_FIREBASE_CONFIG',
-    appId: 'YOUR_FIREBASE_CONFIG'
+    apiKey: 'AIzaSyC8uad4VK2-rtSRHQmrJMd4Mtdj3bCVyyA',
+    authDomain: 'ibus-bustrack.firebaseapp.com',
+    databaseURL: 'https://ibus-bustrack-default-rtdb.asia-southeast1.firebasedatabase.app',
+    projectId: 'ibus-bustrack',
+    storageBucket: 'ibus-bustrack.firebasestorage.app',
+    messagingSenderId: '1083949263357',
+    appId: '1:1083949263357:web:7b8f0ef40f306cd70ad194'
   };
 
   firebase.initializeApp(firebaseConfig);
